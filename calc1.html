@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</div>
+</div>
+</div>
+</div>
+<!-- Tutorial ToC Ends Here -->
+</div>
+</div>
+<!-- Tutorial ToC Ends Here -->
+<!-- Tutorial Content Starts Here -->
+<div class="tutorial-content qa-content" id="mainContent">
+<h1 class="qa_title">Create a Calculator using HTML, CSS, and JavaScript</h1>
+<div class="qa_category">
+<div id="divCategories">
+<a href='https://www.tutorialspoint.com/articles/category/Javascript' target='_blank'><span>Javascript</span></a><a href='https://www.tutorialspoint.com/articles/category/Web-Development' target='_blank'><span>Web Development</span></a><a href='https://www.tutorialspoint.com/articles/category/Front-End-Technology' target='_blank'><span>Front End Technology</span></a></div>
+<hr/>
+<div id="adp_top_ads" style="text-align:center !important;overflow: hidden; max-height:99px;min-height:99px"></div>
+<script>
+     var adPos = document.getElementById('adp_top_ads');
+     var ad_id_720 = "8014640d-fd34-4b2e-9b1b-cc67234a2325";
+     var ad_id_650 = "2d1bb2c4-eb72-471d-9c80-1bf5514728c1";
+     var ad_id_300 = "df94a1a9-ae2f-432d-9a92-d93823ff4503";
+     var width = window.innerWidth;
+     var ad_id = ad_id_720;
+     if( width <= 768 ){
+        ad_id =  ad_id_300;
+        adPos.style.minHeight = "250px";
+        adPos.style.maxHeight = "250px";
+     }else if( width <= 1435 ){
+        ad_id =  ad_id_650;
+     }
+     adPos.innerHTML = '<div id="' + ad_id + '" class="_ap_apex_ad"></div>';
+     var adpushup = adpushup || {};
+     adpushup.que = adpushup.que || [];
+     adpushup.que.push(function() {
+     adpushup.triggerAd(ad_id);
+     });
+</script>
+</div>
+<p><p>To create a calculator using HTML, CSS, and Javascript, we need to have basic understanding of working of HTML, CSS and JavaScript. Calculator is a simple tool which performs basic arithmetic calculations like Addition, Subtraction, Multiplication and Division. In this article, we are going to discuss how to create a Calculator using <a href="/html/index.htm" target="_blank">HTML</a>, <a href="/css/index.htm" target="_blank">CSS</a>, and <a href="/javascript/index.htm" target="_blank">JavaScript</a>. Usually, if we observe any real-time calculator we know that it has:</p>
+<ul class="list">
+    <li>A grid of numbers (0-9 and 00). </li>
+    <li>Basic arithmetic operators (+, -, /, x, %).</li>
+    <li>Some symbols for special operations such as (clear, backspace and equal)</li>
+</ul>
+<p>The output of our Real Time Calculator will be displayed as below :</p>
+
+
+
+    <title>Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: content-box;
+        }
+        #calc {
+            width: 100%;
+            height: 100vh;
+            display:grid;
+            justify-content: center;
+            align-items: center;
+        }
+        #content {
+            border: 2px solid #2c302c;
+            background: aqua;
+            padding: 10px;
+            border-radius: 10px;
+
+        }
+        #content form input {
+            border: 2px solid #2c302c;
+            outline: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            font-size: 15px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        #backspace {
+            background-color: rgb(237, 89, 30);
+            color: yellow;
+        }
+        #res {
+            background: #9e9a90;
+
+            padding: 10px;
+            color: goldenrod;
+        }
+        #clear {
+            background-color: rgb(237, 89, 30);
+            color: darkgrey;
+        }
+        form #output {
+            display: flex;
+            justify-content: flex-end;
+            margin: 15px 0;
+        }
+        form #output input {
+            text-align: right;
+            flex: 1;
+            font-size: 25px;
+        }
+    </style>
+
+
+    <div id="calc">
+        <div id="content">
+            <form>
+                <div id="output">
+                    <input type="text" id="res">
+                </div>
+                <div class="btn">
+                    <input type="button" value="C" onclick="Clear()" id="clear">
+                    <input type="button" value="←" onclick="Back()" id="backspace">
+                    <input type="button" value="%" onclick="Solve('%')">
+                    <input type="button" value="/" onclick="Solve('/')">
+                    <br>
+                    <input type="button" value="7" onclick="Solve('7')">
+                    <input type="button" value="8" onclick="Solve('8')">
+                    <input type="button" value="9" onclick="Solve('9')">
+                    <input type="button" value="x" onclick="Solve('*')">
+                    <br>
+                    <input type="button" value="4" onclick="Solve('4')">
+                    <input type="button" value="5" onclick="Solve('5')">
+                    <input type="button" value="6" onclick="Solve('6')">
+                    <input type="button" value="-" onclick="Solve('-')">
+                    <br>
+                    <input type="button" value="1" onclick="Solve('1')">
+                    <input type="button" value="2" onclick="Solve('2')">
+                    <input type="button" value="3" onclick="Solve('3')">
+                    <input type="button" value="+" onclick="Solve('+')">
+                    <br>
+                    <input type="button" value="00" onclick="Solve('00')">
+                    <input type="button" value="0" onclick="Solve('0')">
+                    <input type="button" value="." onclick="Solve('.')">
+                    <input type="button" value="=" onclick="Result()">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+          function Solve(val) {
+            var v = document.getElementById('res');
+            v.value += val;
+        }
+        function Result() {
+            var num1 = document.getElementById('res').value;
+            try {
+                var num2 = eval(num1.replace('x', '*'));
+                document.getElementById('res').value = num2;
+            } catch {
+                document.getElementById('res').value = 'Error';
+            }
+        }
+        function Clear() {
+            var inp = document.getElementById('res');
+            inp.value = '';
+        }
+        function Back() {
+            var ev = document.getElementById('res');
+            ev.value = ev.value.slice(0, -1);
+        }
+        document.addEventListener('keydown', function (event) {
+            const key = event.key;
+            const validKeys = '0123456789+-*/.%';
+            if (validKeys.includes(key)) {
+                Solve(key === '*' ? 'x' : key);
+            } else if (key === 'Enter') {
+                Result();
+            } else if (key === 'Backspace') {
+                Back();
+            } else if (key.toLowerCase() === 'c') {
+                Clear();
+            }
+        });
+    </script>
+
+</body>
+</html>
